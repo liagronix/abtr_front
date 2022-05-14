@@ -1,0 +1,12 @@
+{
+  presets: [
+    ['@babel/preset-env', {targets: {node: 'current'}}],
+    ['@babel/preset-react', {targets: {node: 'current'}}],
+    ['@babel/preset-typescript']
+  ],
+  plugins: [
+    ["minify-dead-code-elimination", { "optimizeRawSize": true }],
+    ["minify-guarded-expressions"],
+    ["@babel/plugin-syntax-dynamic-import"]
+  ]
+}

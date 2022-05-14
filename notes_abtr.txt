@@ -1,0 +1,30 @@
+cd D:\Server2020\Projects\ab_test_real\abtr_front
+cd /var/www/tr19
+
+sudo systemctl restart apache2
+
+195.211.251.211
+ghostbsd: 91HbnvGentYflhVsij
+
+tr19.ru
+Имя: tbus
+Пароль: UhfxbGhbktntkb
+набор пароля: ГрачиПрилетели (на англ расскладке)
+
+nano /var/log/apache2/error.log
+
+cd D:\Server2020\Projects\ab_test_real\abtr_server
+
+python manage.py shell
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py runserver
+
+
+npm install --save @visx/group @visx/shape @visx/scale @visx/gradient @visx/mock-data @visx/axis @visx/event @visx/tooltip @visx/grid
+npm install d3-time-format --save
+npm i --save-dev @types/d3-time-format
+
+ npm install  @feathersjs/express@5.0.0-pre.20 --save

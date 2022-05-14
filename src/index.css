@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+hinttrolleybus {
+  background-color: #AAEEDD
+}
+
+.swal_button {
+  color: white;
+  border-radius: 10px;
+  font-weight: 300;
+}
+.cancel_button {
+  background-color: #FF1111;
+}
+
+.cancel_button:hover { background-color: #c20000!important; }
+
+.confirm_button { background-color: #5CDC70; }
+.confirm_button:hover { background-color: #17a942!important; }
+.ok_button { background-color: #4A9DFF; }
+.ok_button:hover { background-color: #006fcb!important; }
+
+.MuiTab-root {
+  padding: 8px 29px!important;
+  height: 37px!important;
+  min-height: 37px!important;
+  background-color: white!important;
+  border-radius: 10px 10px 0 0!important;
+  margin: 10px 10px 0 0!important;
+  box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+  color: rgba(93, 110, 151, 0.4)!important;
+}
+button.MuiTab-root {
+  font-size: 16px!important;
+  line-height:16px;
+}
+.MuiTab-root.Mui-selected {
+    color: #5D6D97!important;
+}
+
+.MuiTabs-root {
+  min-height: 47px!important;
+  /* padding-top: 5px!important; */
+}

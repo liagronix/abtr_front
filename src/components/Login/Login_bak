@@ -1,0 +1,95 @@
+import React from 'react';
+import { styled } from '@mui/material/styles';
+
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import TextField from '@mui/material/TextField';
+
+
+import Desktop from '../Desktop/Desktop'
+import {useApi} from '../../api/api_provider';
+import type {IRootAPI} from '../../api/root';
+
+let api:IRootAPI;
+
+export default function Login(props:any) {
+  const [username, setUsername] = React.useState();
+  const [password, setPassword] = React.useState();
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  const handleUsernameChange = (event: any): void => {
+    setUsername(event.target.value);
+  }
+
+  const handlePasswordChange = (event: any): void => {
+    setPassword(event.target.value);
+  }
+
+  const drawerBody :any[]=[];
+  // drawerBody.push(<TestTitle key='TestTitle'/>);
+  // drawerBody.push(<PageSelector key='PageSelector'/>);
+  drawerBody.push(
+    <Box key='title-items' sx={{p:1}}>
+      Содержимое drawer вкладки login
+    </Box>
+  );
+
+
+  api= useApi();
+  // api.hello();
+
+  const onClick = ()=>{
+    console.log('is_logged: ', api.is_logged);
+    // api.hello();
+  }
+
+  const onClickLogin = ()=>{
+    api.db.login('tbus', 'UhfxbGhbktntkb')
+      .then( (result:any) =>
+        console.log('Result of login: ', result)
+      )
+      .catch( (error:any) => {
+        console.log('Error: ', error);
+        setError((error.data&&error.data.detail)||'Ошибка регистрации пользователя на сервере');
+        // setError(`Ошибка: $(err)`)
+      })
+  }
+
+  return (
+    <Desktop drawerBody={drawerBody}>
+      <Box sx={{margin:'auto'}}>
+        <Typography variant="h3" noWrap color="secondary" sx={{m:2}}>
+          Вход в систему
+        </Typography>
+        <FormGroup>
+          <FormControlLabel labelPlacement="start" color="primary" control={
+            <TextField
+              hiddenLabel
+              id="filled-hidden-label-small"
+              defaultValue="username"
+              variant="filled"
+              size="small"
+            />
+          } label="Имя " />
+          <FormControlLabel labelPlacement="start" control={
+            <TextField
+              hiddenLabel
+              id="filled-hidden-label-small"
+              defaultValue="password"
+              variant="filled"
+              size="small"
+            />
+          } label="Пароль " />
+        </FormGroup>
+
+
+         <Button color="primary" variant="contained" onClick={onClick}>Info</Button>
+         <Button color="secondary" variant="contained" onClick={onClickLogin}>Login</Button>
+       </Box>
+    </Desktop>
+  )
+}
