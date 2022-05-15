@@ -1,5 +1,5 @@
 import type { IRootAPI } from './root';
-import feathers from '@feathersjs/client';
+// import feathers from '@feathersjs/client';
 // import express from '@feathersjs/express';
 // const express = require('@feathersjs/express');
 
@@ -10,11 +10,11 @@ import feathers from '@feathersjs/client';
 // import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication';
 // import { Application } from '@feathersjs/feathers';
 // import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication';
-import authentication from '@feathersjs/authentication-client';
+// import authentication from '@feathersjs/authentication-client';
 
-import rest from '@feathersjs/rest-client';
+// import rest from '@feathersjs/rest-client';
 import axios, {AxiosInstance} from 'axios';
-import type { IFeatherService } from './AppTypes';
+// import type { IFeatherService } from './AppTypes';
 
 const day_seconds = 24*60*60;
 
@@ -47,8 +47,8 @@ export default class CDB2_ABTR {
   root: IRootAPI;
   authService: any;
   token: string;
-  userActivities: IFeatherService;
-  users: IFeatherService;
+  // userActivities: IFeatherService;
+  // users: IFeatherService;
   core: any;
   isLoading : boolean;
   isDataReady : boolean;
