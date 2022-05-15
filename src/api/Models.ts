@@ -374,50 +374,6 @@ export default class CContainer {
     }
   }
 
-  CalculateRollingRetention_deprecated(days:number) {
-    const api = CContainer.api;
-    let returnCnt = 0;
-    let registerCnt = 0;
-    const _now : Date = api.setDateMidnight(new Date());
-
-    const records = this.get();
-    return api.db2_abtr.userActivities.find()
-      .then( (records: CUserActivities[])=> {
-        if (!Array.isArray(records)) {
-          this.rollingRetention = undefined;
-          api.log.informWarning('Data of wrong format received from the server');
-        } else if (!records.length) {
-          this.rollingRetention = undefined;
-          api.log.informWarning('Empty saved data set received from server');
-        } else {
-          records.forEach( (record:CUserActivities) => {
-            const item = new CUserActivities(record);
-              if (item.last_activity &&
-                  ((item.last_activity as any - (item.registration as any)) /Day_ms) >= days) {
-                returnCnt ++;
-              }
-
-              if (item.registration && ((_now as any - (item.registration as any))/Day_ms) >= days) {
-                registerCnt++;
-              }
-          });
-          this.rollingRetention = !registerCnt ? null :
-            Math.round(returnCnt/registerCnt*100);
-        }
-        return Promise.resolve(this.rollingRetention);
-      })
-      .catch( (err:any)=>{
-        api.log.informError('Error of getting saved data from server');
-        console.log('DB getting data error: ', err);
-        this.rollingRetention = undefined;
-        return Promise.reject(err);
-      })
-      .finally( ()=>{
-        api.listeners.run('refresh', ['rolling-retention']);
-
-      })
-
-  }
 
   getRollingRetention() {
     const r = this.rollingRetention;

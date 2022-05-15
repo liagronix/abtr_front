@@ -49,9 +49,9 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" element={
         !api.is_logged ? (
-          <About />
+          <AboutLazy />
         ) : (
-          <RootPageLazy />
+          <ABTRMainTabsLazy />
         )}
       />
 
@@ -60,7 +60,7 @@ const AppRouter = () => {
         api.is_logged ? (
           <Navigate replace to="/" />
         ) : (
-          <Login />
+          <LoginLazy />
         )}
       />
     </Routes>
@@ -71,11 +71,32 @@ const AppRouter = () => {
 const ABTRMainTabs = React.lazy(() => import('./components/ABTRMain/ABTRMainTabs'));
 const About = React.lazy(() => import('./components/About/About'));
 const Login = React.lazy(() => import('./components/Login/Login'));
-function RootPageLazy() {
+
+function ABTRMainTabsLazy() {
   return(
         <React.Fragment>
           <React.Suspense fallback={<div>Loading...</div>}>
             <ABTRMainTabs />
+          </React.Suspense>
+        </React.Fragment>
+      );
+    }
+
+function AboutLazy() {
+  return(
+        <React.Fragment>
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </React.Suspense>
+        </React.Fragment>
+      );
+    }
+
+function LoginLazy() {
+  return(
+        <React.Fragment>
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Login />
           </React.Suspense>
         </React.Fragment>
       );

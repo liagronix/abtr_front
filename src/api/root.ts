@@ -5,6 +5,7 @@ import CListener from "./CListener";
 import CDB2_ABTR from './CDB2_ABTR';
 import CAbstractObject from './CAbstractObject';
 import CLogAPI from './CLog';
+import CProfiler from './Profiler';
 
 import type { IOrder, IRoute, TArray } from './AppTypes';
 
@@ -24,6 +25,7 @@ export interface IRootAPI {
   // db_abtr: CD_ABTR;
   db2_abtr: CDB2_ABTR;
   log: CLogAPI;
+  profiler: CProfiler;
   isDrawerOpen : boolean;
   location : any;
   is_logged: boolean;
@@ -61,6 +63,7 @@ export class RootAPI implements IRootAPI {
   // db_abtr: CD_ABTR;
   db2_abtr: CDB2_ABTR;
   log: CLogAPI;
+  profiler: CProfiler;
   // data : {
   //   routes : IRoute[];
   // }
@@ -88,6 +91,7 @@ export class RootAPI implements IRootAPI {
       savedData: new CContainer("UserActivities")
     }
     this.log = new CLogAPI(this);
+    this.profiler = new CProfiler(this);
     // this.db = new CDB(this);
     // this.db_abtr = new CD_ABTR(this);
     this.db2_abtr = new CDB2_ABTR(this);
